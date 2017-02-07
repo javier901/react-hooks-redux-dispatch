@@ -77,7 +77,8 @@ dispatch({type: 'INCREASE_COUNT'})
 
 Ok, it's fixed!!  Previously our state was stuck at one, but now we just call our `dispatch` function, and pass through our action.  Let's walk through it.
 
-We declare our state to equal an object `{counter: 0}`.  Then, we define our reducer and our new function `dispatch`.  At the bottom, we call the `dispatch` function and pass through our action, `{type: 'INCREASE_COUNT'}`.  When we call `dispatch`, this calls our `changeState` reducer, and passes the `changeState` reducer the action object.  The `changeState` reducer references the already declared state and passes that through.  And the `changeState` reducer has access to the state object because the state object is declared in global scope.  Then in the reducer we return a new object that has a property count, whose corresponding value is one plus the previous state's count -- in this case the state is changed to one.  Finally, back in the `dispatch` function we take the return value of {counter: 1} and assign it to our state variable.  Thus, our state is updated.
+
+We declare our state to equal an object `{counter: 0}`.  Then, we define our reducer and our new function `dispatch`.  At the bottom, we call the `dispatch` function and pass through our action, `{type: 'INCREASE_COUNT'}`.  When we call `dispatch`, this calls our `changeState` reducer, and passes the `changeState` reducer the action object.  The `changeState` reducer references the already declared state and passes that through.  And the `changeState` reducer has access to the state object because the state object is declared in global scope.  Then in the reducer we return a new object that has a property count, whose corresponding value is one plus the previous state's count -- in this case the state is changed to one.  Finally, back in the `dispatch` function we take the return value of `{counter: 1}` and assign it to our state variable.  Thus, our state is updated.
 
 
 ## Rendering our State
@@ -140,6 +141,8 @@ We introduced a new function called the `dispatch` function.  Our `dispatch` fun
 
 First, it persisted changes to our state.  This is because we called the `dispatch` function, the `dispatch` function called our reducer, and then we took the return value from the reducer and assigned it to be our new state.
 
+
 Second, it ensured that each time our state updates, our HTML updates to reflect these changes.  It does this by simply calling the `render` function.  Each time we call `dispatch` it's as if we are then calling render.  Don't worry about re-rendering too much.  Remember that when we integrate with React, React will only be virtually re-rendering the DOM, and then updating the DOM with the smallest number of changes to ensure a performant application.
+
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/redux-dispatch'>Redux Dispatch</a> on Learn.co and start learning to code for free.</p>
