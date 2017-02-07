@@ -87,7 +87,7 @@ Now, how would we display something like this on a page?  And how would we make 
 
 ```javascript
 function render(){
-	document.setInnerHtml = state.counter
+	document.setInnerHTML = state.counter
 }
 ```
 
@@ -110,18 +110,19 @@ function dispatch(action){
 }
 
 function render(){
-	document.setInnerHtml = state.counter
+	document.setInnerHTML = state.counter
 }
 
 // call the render function
 render()
 ```
 
-And presto! Our number is displayed on the page.  However, we want to call `render` every time our state changes.  And it's safe to say our state will not change unless we call the `dispatch` function.  So we can just ensure that the `render` function is called every time that our `dispatch` function is run by changing our `dispatch` function to the following.
+And presto! Our number is displayed on the page.  However, we want to call `render` every time our state changes.  And it's safe to say our state will not change unless we call the `dispatch` function.  So we can ensure that the `render` function runs every time that our `dispatch` function is called by changing our `dispatch` function to the following.
+
 
 ```javascript
 function render(){
-	document.setInnerHtml = state.counter
+	document.setInnerHTML = state.counter
 }
 
 function dispatch(action){
