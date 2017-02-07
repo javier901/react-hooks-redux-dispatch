@@ -82,11 +82,11 @@ We declare our state to equal an object `{counter: 0}`.  Then, define our reduce
 
 ## Rendering our State
 
-Now, how would we display something like this on a page?  And how would we make sure that our html updates every time we change our state?  Well to render this on the page we can write a render function that changes our html.   
+Now, how would we display something like this on a page?  And how would we make sure that our HTML updates every time we change our state?  Well, to render this on the page we can write a render function that changes our HTML.   
 
 ```javascript
 function render(){
-	document.setInnerHtml = state.counter
+	document.setInnerHTML = state.counter
 }
 ```
 
@@ -109,18 +109,18 @@ function dispatch(action){
 }
 
 function render(){
-	document.setInnerHtml = state.counter
+	document.setInnerHTML = state.counter
 }
 
 // call the render function
 render()
 ```
 
-And presto! Our number is displayed on the page.  However we want to call `render` every time our state changes.  And its safe to say our state will not change unless we call the `dispatch` function.  So we can just call ensure that the `render` function runs every time that our `dispatch` function is run by changing our `dispatch` function to the following.
+And presto! Our number is displayed on the page.  However, we want to call `render` every time our state changes.  And it's safe to say our state will not change unless we call the `dispatch` function.  So we can ensure that the `render` function runs every time that our `dispatch` function is called by changing our `dispatch` function to the following.
 
 ```javascript
 function render(){
-	document.setInnerHtml = state.counter
+	document.setInnerHTML = state.counter
 }
 
 function dispatch(action){
@@ -132,7 +132,7 @@ dispatch({type: 'INCREASE_COUNT'})
 dispatch({type: 'INCREASE_COUNT'})
 ```
 
-And there you have it, our html updates appropriately.
+And there you have it, our HTML updates appropriately.
 
 ## Summary
 
@@ -140,4 +140,6 @@ We introduced a new function called the `dispatch` function.  Our `dispatch` fun
 
 First, it persisted changes to our state.  This is because by calling the `dispatch` function, the `dispatch` function called our reducer, and then took the return value from the reducer and assigned it to be our new state.
 
-Second, it ensured that each time our state updates, our html updates to reflect these changes.  It does this by simply calling the `render` function.  So that each time we call `dispatch` its as if we are then calling render.  Don't worry about re-rendering too much.  Remember that when we integrate with React, React will only be virtually re-rendering the DOM, and then updating the DOM with the smallest number of changes to ensure a performant application.
+Second, it ensured that each time our state updates, our HTML is updated to reflect these changes.  It does this by simply calling the `render` function.  So that each time we call `dispatch` it's as if we are then calling render.  Don't worry about re-rendering too much.  Remember that when we integrate with React, React will only be virtually re-rendering the DOM, and then updating the DOM with the smallest number of changes to ensure a performant application.
+
+<p class='util--hide'>View <a href='https://learn.co/lessons/redux-dispatch'>Redux Dispatch</a> on Learn.co and start learning to code for free.</p>
