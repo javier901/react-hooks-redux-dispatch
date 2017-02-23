@@ -44,9 +44,9 @@ See that? Our state never increases beyond one.  It starts off as zero, and whil
 ```javascript
 state = changeState(state, {type: 'INCREASE_COUNT'})
 state
-	=> {counter: 1}
+	=> {count: 1}
 state = changeState(state, {type: 'INCREASE_COUNT'})
-	=> {counter: 2}
+	=> {count: 2}
 ```
 
 Ok.  So let's encapsulate this procedure in a function so that we can just call that method and it will persist our changes.  We'll name that function `dispatch`.  
