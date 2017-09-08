@@ -52,7 +52,7 @@ state = changeState(state, {type: 'INCREASE_COUNT'})
 Ok.  So let's encapsulate this procedure in a function so that we can just call that method and it will persist our changes.  We'll name that function `dispatch`.  
 
 ```javascript
-let state = {counter: 0};
+let state = {count: 0};
 
 function changeState(state, action){
     switch (action.type) {
