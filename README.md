@@ -52,7 +52,7 @@ state = changeState(state, {type: 'INCREASE_COUNT'})
 Ok.  So let's encapsulate this procedure in a function so that we can just call that method and it will persist our changes.  We'll name that function `dispatch`.  
 
 ```javascript
-let state = {counter: 0};
+let state = {count: 0};
 
 function changeState(state, action){
     switch (action.type) {
@@ -78,7 +78,7 @@ dispatch({type: 'INCREASE_COUNT'})
 Ok, it's fixed!!  Previously our state was stuck at one, but now we just call our `dispatch` function, and pass through our action.  Let's walk through it.
 
 
-We declare our state to equal an object `{counter: 0}`.  Then, we define our reducer and our new function `dispatch`.  At the bottom, we call the `dispatch` function and pass through our action, `{type: 'INCREASE_COUNT'}`.  When we call `dispatch`, this calls our `changeState` reducer, and passes the `changeState` reducer the action object.  The `changeState` reducer references the already declared state and passes that through.  And the `changeState` reducer has access to the state object because the state object is declared in global scope.  Then in the reducer we return a new object that has a property count, whose corresponding value is one plus the previous state's count -- in this case the state is changed to one.  Finally, back in the `dispatch` function we take the return value of `{counter: 1}` and assign it to our state variable.  Thus, our state is updated.
+We declare our state to equal an object `{count: 0}`.  Then, we define our reducer and our new function `dispatch`.  At the bottom, we call the `dispatch` function and pass through our action, `{type: 'INCREASE_COUNT'}`.  When we call `dispatch`, this calls our `changeState` reducer, and passes the `changeState` reducer the action object.  The `changeState` reducer references the already declared state and passes that through.  And the `changeState` reducer has access to the state object because the state object is declared in global scope.  Then in the reducer we return a new object that has a property count, whose corresponding value is one plus the previous state's count -- in this case the state is changed to one.  Finally, back in the `dispatch` function we take the return value of `{count: 1}` and assign it to our state variable.  Thus, our state is updated.
 
 
 ## Rendering our State
@@ -87,14 +87,14 @@ Now, how would we display something like this on a page?  And how would we make 
 
 ```javascript
 function render(){
-	document.setInnerHTML = state.counter
+	document.setInnerHTML = state.count
 }
 ```
 
 Now if we want to call our render function.  We'll see our state on the page.
 
 ```javascript
-let state = {counter: 0};
+let state = {count: 0};
 
 function changeState(state, action){
     switch (action.type) {
@@ -110,7 +110,7 @@ function dispatch(action){
 }
 
 function render(){
-	document.setInnerHTML = state.counter
+	document.setInnerHTML = state.count
 }
 
 // call the render function
