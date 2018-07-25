@@ -95,15 +95,17 @@ our `dispatch` function, and pass through our action.  Let's walk through it.
 We declare our state to equal an object `{count: 0}`.  Then, we define our
 reducer and our new function `dispatch`.  At the bottom, we call the `dispatch`
 function and pass through our action, `{type: 'INCREASE_COUNT'}`.  When we call
-`dispatch`, this calls our `changeState` reducer, and passes the `changeState`
-reducer the action object.  The `changeState` reducer references the already
-declared state and passes that through.  And the `changeState` reducer has
-access to the state object because the state object is declared in global scope.
-Then in the reducer we return a new object that has a property count, whose
-corresponding value is one plus the previous state's count -- in this case the
-state is changed to one.  Finally, back in the `dispatch` function we take the
-return value of `{count: 1}` and assign it to our state variable.  Thus, our
-state is updated.
+`dispatch`, this calls our `changeState` reducer, and passes the action object 
+to the reducer.  When called, the `changeState` reducer also takes in `state`, 
+which has been declared up above.  
+
+`state` is assigned the return value of `changeState`. Since the
+`INCREASE_COUNT` type was used, the returned value of `changeState` contains a
+`count` equal to the previous state's count plus one.
+
+Thus, our state is updated. Each time `dispatch` is called, the current version of
+`state` is passed into `changeState`, and then `state` is assigned a new value based
+on what `changeState` returns.
 
 ## Rendering our State
 
