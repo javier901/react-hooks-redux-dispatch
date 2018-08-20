@@ -183,8 +183,8 @@ function changeState(state, action){
     }
   }
 
-function dispatch(action){
-	state = changeState(state, action)
+function render(){
+    document.setInnerHTML = state.counter
 }
 
 function dispatch(action){
