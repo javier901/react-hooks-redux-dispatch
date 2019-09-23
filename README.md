@@ -155,7 +155,7 @@ changing our `dispatch` function to the following.
 
 ```javascript
 function render(){
-	document.setInnerHTML = state.counter
+	document.setInnerHTML = state.count
 }
 
 function dispatch(action){
@@ -184,7 +184,7 @@ function changeState(state, action){
   }
 
 function render(){
-    document.setInnerHTML = state.counter
+    document.setInnerHTML = state.count
 }
 
 function dispatch(action){
