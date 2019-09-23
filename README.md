@@ -120,7 +120,7 @@ function render(){
 }
 ```
 
-Now if we want to call our render function.  We'll see our state on the page.
+Now if we want to call our render function, we'll see our state on the page:
 
 ```javascript
 let state = {count: 0};
