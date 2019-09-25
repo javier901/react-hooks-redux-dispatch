@@ -2,10 +2,14 @@
 
 ## Objectives
 
-In this lesson, you will learn the following:
+In this code-along, you will learn the following:
 
 * How to persist changes to state.
 * How to display changes to the state in the view.
+
+An HTML page, `index.html`, is provided and already linked to `js/reducer.js`.
+Open `index.html` in browser to access the functions in `reducer.jr` and follow
+along.
 
 ## Building our Counter Application
 
@@ -29,18 +33,17 @@ changeState(state, action)
 // => {count: 1}
 ```
 
-
 ## Persisting State
 
 We currently have a problem.  Let's call `changeState` multiple times:
 
 ```javascript
 changeState(state, {type: 'INCREASE_COUNT'})
-	// => {count: 1}
+  // => {count: 1}
 changeState(state, {type: 'INCREASE_COUNT'})
-	// => {count: 1}
+  // => {count: 1}
 changeState(state, {type: 'INCREASE_COUNT'})
-	// => {count: 1}
+  // => {count: 1}
 ```
 
 See that? Our state never increases beyond one.  It starts off as zero, and
@@ -51,9 +54,9 @@ bad.  We just write
 ```javascript
 state = changeState(state, {type: 'INCREASE_COUNT'})
 state
-	=> {count: 1}
+  => {count: 1}
 state = changeState(state, {type: 'INCREASE_COUNT'})
-	=> {count: 2}
+  => {count: 2}
 ```
 
 Here, we're reassigning state to the return value of our reducer. This way, the
@@ -77,26 +80,25 @@ function changeState(state, action){
   }
 
 function dispatch(action){
-	state = changeState(state, action)
+  state = changeState(state, action)
 }
 
 dispatch({type: 'INCREASE_COUNT'})
-	// => 1
+  // => 1
 dispatch({type: 'INCREASE_COUNT'})
-	// => 2
+  // => 2
 dispatch({type: 'INCREASE_COUNT'})
-	// => 3
+  // => 3
 ```
 
 Ok, it's fixed!!  Previously our state was stuck at one, but now we just call
 our `dispatch` function, and pass through our action.  Let's walk through it.
 
-
 We declare our state to equal an object `{count: 0}`.  Then, we define our
 reducer and our new function `dispatch`.  At the bottom, we call the `dispatch`
 function and pass through our action, `{type: 'INCREASE_COUNT'}`.  When we call
-`dispatch`, this calls our `changeState` reducer, and passes the action object 
-to the reducer.  When called, the `changeState` reducer also takes in `state`, 
+`dispatch`, this calls our `changeState` reducer, and passes the action object
+to the reducer.  When called, the `changeState` reducer also takes in `state`,
 which has been declared up above.  
 
 `state` is assigned the return value of `changeState`. Since the
@@ -116,7 +118,7 @@ HTML:
 
 ```javascript
 function render(){
-	document.setInnerHTML = state.count
+  document.body.textContent = state.count
 }
 ```
 
@@ -135,11 +137,11 @@ function changeState(state, action){
   }
 
 function dispatch(action){
-	state = changeState(state, action)
+  state = changeState(state, action)
 }
 
 function render(){
-	document.setInnerHTML = state.count
+  document.body.textContent = state.count
 }
 
 // call the render function
@@ -152,15 +154,14 @@ change unless we call the `dispatch` function.  So we can ensure that the
 `render` function runs every time that our `dispatch` function is called by
 changing our `dispatch` function to the following.
 
-
 ```javascript
 function render(){
-	document.setInnerHTML = state.count
+  document.body.textContent = state.count
 }
 
 function dispatch(action){
-	state = changeState(state, action)
-	render()
+  state = changeState(state, action)
+  render()
 }
 
 dispatch({type: 'INCREASE_COUNT'})
@@ -184,17 +185,25 @@ function changeState(state, action){
   }
 
 function render(){
-    document.setInnerHTML = state.count
+    document.body.textContent = state.count
 }
 
 function dispatch(action){
-	state = changeState(state, action)
-	render()
+  state = changeState(state, action)
+  render()
 }
+
+render()
 ```
+
+If you copy the code above into `js/reducer.js` and open `index.html` in 
+your browser, in the console, you can confirm everything is working by running `dispatch({type: 'INCREASE_COUNT'})` and watch as the displayed
+count increases!
 
 With just this set of functions, we could actually apply our own Redux pattern
 to a regular ol' JavaScript and HTML webpage!
+
+## Conclusion
 
 In this lesson, we've introduced a new function called the `dispatch` function.
 Our `dispatch` function solved two problems for us.
@@ -209,6 +218,5 @@ we call `dispatch` it's as if we are then calling render.  Don't worry about
 re-rendering too much.  Remember that when we integrate with React, React will
 only be virtually re-rendering the DOM, and then updating the DOM with the
 smallest number of changes to ensure a performant application.
-
 
 <p class='util--hide'>View <a href='https://learn.co/lessons/redux-dispatch'>Redux Dispatch</a> on Learn.co and start learning to code for free.</p>
