@@ -81,14 +81,15 @@ function changeState(state, action){
 
 function dispatch(action){
   state = changeState(state, action)
+  return state
 }
 
 dispatch({type: 'INCREASE_COUNT'})
-  // => 1
+  // => {count: 1}
 dispatch({type: 'INCREASE_COUNT'})
-  // => 2
+  // => {count: 2}
 dispatch({type: 'INCREASE_COUNT'})
-  // => 3
+  // => {count: 3}
 ```
 
 Ok, it's fixed!!  Previously our state was stuck at one, but now we just call
@@ -109,7 +110,7 @@ Thus, our state is updated. Each time `dispatch` is called, the current version 
 `state` is passed into `changeState`, and then `state` is assigned a new value based
 on what `changeState` returns.
 
-## Rendering our State
+## Rendering Our State
 
 Ignoring React for a bit, how would we display something like this on a page?
 And how would we make sure that our HTML updates every time we change our state?
@@ -138,6 +139,7 @@ function changeState(state, action){
 
 function dispatch(action){
   state = changeState(state, action)
+  return state
 }
 
 function render(){
