@@ -8,7 +8,7 @@ In this code-along, you will learn the following:
 * How to display changes to the state in the view.
 
 An HTML page, `index.html`, is provided and already linked to `js/reducer.js`.
-Open `index.html` in browser to access the functions in `reducer.jr` and follow
+Open `index.html` in browser to access the functions in `reducer.js` and follow
 along.
 
 ## Building our Counter Application
