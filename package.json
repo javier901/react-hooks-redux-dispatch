@@ -1,8 +1,8 @@
 {
-  "name": "redux-dispatch",
+  "name": "react-hooks-redux-dispatch",
   "version": "1.0.0",
   "description": "A code-along on dispatching actions in redux",
-  "main": "js/reducer.js",
+  "main": "src/reducer.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
     "start": "open index.html"
