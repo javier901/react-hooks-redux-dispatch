@@ -198,9 +198,10 @@ function dispatch(action) {
 render();
 ```
 
-If you copy the code above into `src/reducer.js` and open `index.html` in
-your browser, in the console, you can confirm everything is working by running `dispatch({type: 'counter/increment'})` and watch as the displayed
-count increases!
+If you copy the code above into `src/reducer.js` and open `index.html` in your
+browser, in the console, you can confirm everything is working by running
+`dispatch({type: 'counter/increment'})` and watch as the displayed count
+increases!
 
 With just this set of functions, we could actually apply our own Redux pattern
 to a regular ol' JavaScript and HTML webpage!
