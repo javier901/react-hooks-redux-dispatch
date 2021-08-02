@@ -221,5 +221,3 @@ we call `dispatch` it's as if we are then calling render. Don't worry about
 re-rendering too much. Remember that when we integrate with React, React will
 only be virtually re-rendering the DOM, and then updating the DOM with the
 smallest number of changes to ensure a performant application.
-
-<p class='util--hide'>View <a href='https://learn.co/lessons/redux-dispatch'>Redux Dispatch</a> on Learn.co and start learning to code for free.</p>
