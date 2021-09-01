@@ -1,11 +1,11 @@
 # Persisting State and Displaying State
 
-## Objectives
+## Learning Goals
 
-In this code-along, you will learn the following:
+- Persist changes to state
+- Display changes to the state in the view
 
-- How to persist changes to state.
-- How to display changes to the state in the view.
+## Instructions
 
 An HTML page, `index.html`, is provided and already linked to `src/reducer.js`.
 Open `index.html` in browser to access the functions in `reducer.js` and follow
